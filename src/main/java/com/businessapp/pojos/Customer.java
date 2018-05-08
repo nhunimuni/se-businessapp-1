@@ -98,4 +98,8 @@ public class Customer implements EntityIntf  {
 		return this;
 	}
 
+	public void addNote(String note) {
+		notes.add( new LogEntry(note));
+	}
+
 }

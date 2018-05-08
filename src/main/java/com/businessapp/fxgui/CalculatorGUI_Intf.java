@@ -24,7 +24,6 @@ public interface CalculatorGUI_Intf extends FXMLControllerIntf {
 	};
 
 	public void writeTextArea( String text );
-
 	public void writeSideArea( String text );
-
+	public String getTextArea();
 }

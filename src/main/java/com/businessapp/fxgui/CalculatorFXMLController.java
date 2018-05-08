@@ -119,6 +119,12 @@ public class CalculatorFXMLController implements CalculatorGUI_Intf {
 		sideTextArea.setText( text );
 	}
 
+	@Override
+	public String getTextArea() {
+		return displayTextField.getText();
+	}
+
+
 
 	/**
 	 * Private methods.
