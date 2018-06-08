@@ -57,6 +57,17 @@
 	-fx-background-color: #ffd8bc;	/* color name: corn silk, #fff8dc-#002020 */
 }
 
+.tableview-customer-column-notes-button2 {
+	-fx-background-color: #d8d7ff; 	/* color name: corn silk, #fff8dc-#000404 */
+	-fx-background-insets: 0;
+	-fx-padding: 0 0 0 0;
+	-fx-pref-width: 50px;
+}
+
+.tableview-customer-column-notes-button2:hover {
+	-fx-background-color: #c6c1ff;	/* color name: corn silk, #fff8dc-#002020 */
+}
+
 
 .tableview-customer-hbox {
     -fx-spacing: 10;		/* horizontal spacing between hbox elements */

@@ -108,10 +108,10 @@ class CustomerDataMockImpl implements CustomerDataIntf {
 
 	@Override
 	public Customer newCustomer( String firstName, String lastName ) {
-		Customer e = new Customer( null, firstName, lastName );
-		_data.put( e.getId(), e );
+		Customer a = new Customer( null, firstName, lastName );
+		_data.put( a.getId(), a );
 		//save( "created: ", c );
-		return e;
+		return a;
 	}
 
 	/*
