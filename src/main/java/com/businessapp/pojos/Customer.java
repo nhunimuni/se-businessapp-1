@@ -27,18 +27,13 @@ public class Customer implements EntityIntf  {
 	private String lastName = null;
 	private String firstName = null;
 
-	//private String name = null;
-
-	/*
-	private String firstName = null;
-	private String lastName = null;
-	*/
-
 	private List<String> contacts = new ArrayList<String>();
 
 	private List<LogEntry> notes = new ArrayList<LogEntry>();
 
 	private CustomerStatus status = CustomerStatus.ACTIVE;
+
+	private ArrayList<Rental> rentals = new ArrayList<Rental>();
 
 
 	/**
@@ -65,6 +60,16 @@ public class Customer implements EntityIntf  {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.notes.add( new LogEntry( "Customer record created." ) );
+	}
+
+	public void addRentals( Rental rental ) {
+		rentals.add( rental );
+	}
+
+	public void listRentals()
+	{
+		for ( Rental lent : rentals )
+			System.out.println( lent.getLentArticle() );
 	}
 
 	/**

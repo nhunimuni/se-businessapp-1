@@ -1,0 +1,33 @@
+{
+  "id" : "Kunden 2",
+  "genericType" : "com.businessapp.pojos.Customer",
+  "entities" : [ {
+    "id" : "C.JNO808",
+    "lastName" : "B",
+    "firstName" : "B",
+    "contacts" : [ "b@bbbbb.de" ],
+    "notes" : [ "2018-06-05 14:24:27.854, Customer record created.", "2018-06-05 14:25:18.393, New." ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.CEUKBQ",
+    "lastName" : "A.",
+    "firstName" : "A.",
+    "contacts" : [ "a@aaaaa.de" ],
+    "notes" : [ "2018-06-05 14:24:08.565, Customer record created.", "2018-06-05 14:25:11.748, New." ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.92DV03",
+    "lastName" : "T.",
+    "firstName" : "Nhu",
+    "contacts" : [ "nhunimuni@asdfgh.de" ],
+    "notes" : [ "2018-06-05 14:23:54.585, Customer record created.", "2018-06-05 14:25:05.600, hi" ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.UYKHCS",
+    "lastName" : "C.",
+    "firstName" : "C.",
+    "contacts" : [ "c@ccccc.de" ],
+    "notes" : [ "2018-06-05 14:24:36.323, Customer record created.", "2018-06-05 14:25:23.662, hi." ],
+    "status" : "ACTIVE"
+  } ]
+}

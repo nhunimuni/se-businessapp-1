@@ -15,7 +15,7 @@ import com.businessapp.pojos.Customer;
 class CustomerDataMockImpl implements CustomerDataIntf {
 
 	private final HashMap<String,Customer> _data;	// HashMap as data container
-	private final CustomerDataIntf DS;				// Data Source/Data Store Intf
+	public final CustomerDataIntf DS;				// Data Source/Data Store Intf
 	private Component parent;						// parent component
 
 	/**

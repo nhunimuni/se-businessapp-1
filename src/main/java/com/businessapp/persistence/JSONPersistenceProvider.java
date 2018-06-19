@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.text.SimpleDateFormat;
 
 import com.businessapp.DTO.JSONMapper;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -44,6 +45,7 @@ class JSONPersistenceProvider implements PersistenceProviderIntf {
 	 */
 	private JSONPersistenceProvider() {
 		mapper = new ObjectMapper();
+		mapper.disable(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES);
 		// "dd.MM.yyyy HH:mm", "dd.MM.yyyy", "HH:mm:ss", "yyyy-MM-dd HH:mm a z"
 		SimpleDateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm a z" );
 		mapper.setDateFormat( dateFormat );

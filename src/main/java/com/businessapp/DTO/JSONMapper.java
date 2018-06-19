@@ -5,6 +5,7 @@ import java.util.HashMap;
 import com.businessapp.pojos.Article;
 import com.businessapp.pojos.Customer;
 import com.businessapp.pojos.EntityIntf;
+import com.businessapp.pojos.Rental;
 
 
 /**
@@ -25,6 +26,7 @@ public class JSONMapper {
 		classMapper = new HashMap<Class<? extends EntityIntf>,Class<? extends JSONIntf>>();
 		classMapper.put( Article.class, ArticleJSON.class );
 		classMapper.put( Customer.class, CustomerJSON.class );
+		classMapper.put( Rental.class, RentalJSON.class );
 
 	}
 
@@ -61,24 +63,27 @@ public class JSONMapper {
 		if( e instanceof Customer ) {
 			System.out.println( " [map Customer -> CustomerJSON: " + e.getId() + "] " );
 			e = new CustomerJSON( (Customer)e );
-
 		} else if( e instanceof Article) {
 			System.out.println( " [map Article -> ArticleJSON: " + e.getId() + "] " );
 			e = new ArticleJSON( (Article) e );
+		} else if( e instanceof Rental) {
+			System.out.println( " [map Rental -> RentalJSON: " + e.getId() + "] " );
+			e = new RentalJSON( (Rental) e );
 		}
 		return e;
 	}
 
 	private EntityIntf mapOut( JSONIntf djo ) {
 		EntityIntf e = null;
-
 		if( djo instanceof CustomerJSON ) {
 			System.err.println( " [map CustomerJSON -> Customer: " + djo.getId() + "] " );
 			e = ((CustomerJSON)djo).getCustomer();
-
 		} else if( djo instanceof ArticleJSON ) {
 			System.err.println( " [map ArticleJSON -> Article: " + djo.getId() + "] " );
 			e = ((ArticleJSON)djo).getArticle();
+		} else if( djo instanceof RentalJSON ) {
+			System.err.println( " [map RentalJSON -> Rental: " + djo.getId() + "] " );
+			e = ((RentalJSON)djo).getRentals();
 		}
 		return e;
 	}

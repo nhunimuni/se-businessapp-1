@@ -1,0 +1,23 @@
+{
+  "id" : "Rental-List",
+  "genericType" : "com.businessapp.pojos.Rental",
+  "entities" : [ {
+    "rentalDate" : "2018/06/19 18:51:09",
+    "lentArticle" : "1222",
+    "quantity" : "1",
+    "notes" : [ "2018-06-19 17:51:03.884, Rental record created." ],
+    "id" : "R.9J1QQ5",
+    "customerOfRental" : {
+      "id" : "C.XIJFSY",
+      "lastName" : "okay",
+      "firstName" : "hi",
+      "contacts" : [ ],
+      "notes" : [ {
+        "log" : "Customer record created.",
+        "simpleTimestamp" : "19. Jun 2018, 17:51"
+      } ],
+      "status" : "ACTIVE",
+      "notesAsStringList" : [ "2018-06-19 17:51:09.420, Customer record created." ]
+    }
+  } ]
+}

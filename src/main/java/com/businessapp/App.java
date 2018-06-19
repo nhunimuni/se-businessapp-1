@@ -26,8 +26,8 @@ public class App extends Application {
 	public static final String DATA_PATH	= "data/";
 	public static final String FXML_PATH	= "fxgui/";
 	private static App _app = null;
-	private PersistenceProviderIntf persistenceProvider = PersistenceProviderFactory.getPersistenceProvider( "JavaSerialization" );
-	//private PersistenceProviderIntf persistenceProvider = PersistenceProviderFactory.getPersistenceProvider( "json" );
+	//private PersistenceProviderIntf persistenceProvider = PersistenceProviderFactory.getPersistenceProvider( "JavaSerialization" );
+	private PersistenceProviderIntf persistenceProvider = PersistenceProviderFactory.getPersistenceProvider( "json" );
 	/*
 	 * List of App components in order of appearance on the main GUI/TabPanel.
 	 */
@@ -41,7 +41,25 @@ public class App extends Application {
 			new Component(	"Kundenliste_2","Customer.fxml", CustomerDataSource.getController( "Kunden 2", persistenceProvider ) ),
 			new Component(	"Studenten","Customer.fxml", CustomerDataSource.getController( "Studenten", persistenceProvider ) ),
 			new Component("Katalog", "Katalog.fxml", ArticleDataSource.getController( "Katalog", persistenceProvider ) ),
+			new Component("Rental-List", "Rental.fxml", RentalDataSource.getController( "Rental-List", persistenceProvider ) ),
+
 	}));
+
+	/*
+	 * List of App components in order of appearance on the main GUI/TabPanel.
+	 */
+	/*private ComponentBuilder compBuilder = new ComponentBuilder(
+			Arrays.asList( new Component[] {
+					//				Name,			FXML UI-Controller,		Logic-Controller
+					new Component(	"Main",			"App.fxml",				null ),
+					new Component(	"Calculator",	"Calculator.fxml",		CalculatorLogicIntf.getController() ),
+					//new Component( "Calc_2",		"Calculator.fxml",		CalculatorLogicIntf.getController() ),
+					new Component(	"Kunden",		"Customer.fxml",		CustomerDataIntf.getController() ),
+					new Component(	"Kundenliste_2","Customer.fxml",		CustomerDataIntf.getController() ),
+					new Component(	"Studenten","Customer.fxml",		CustomerDataIntf.getController() ),
+					new Component( "Katalog",		"Catalog.fxml",			ArticleDataIntf.getController() ),
+					new Component( "Rental-List",		"Rental.fxml",			RentalDataIntf.getController() ),
+			}));*/
 
 	public static App getInstance() {
 		return _app;
