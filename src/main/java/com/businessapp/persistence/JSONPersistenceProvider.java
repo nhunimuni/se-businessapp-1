@@ -114,7 +114,7 @@ class JSONPersistenceProvider implements PersistenceProviderIntf {
 				mapper.writerWithDefaultPrettyPrinter().writeValue( file, wrapper );
 
 			} catch( IOException ex ) {
-				System.out.println( "IOException: " + ex.getMessage() );
+				System.out.println( "IOException loool: " + ex.getMessage() );
 			}
 		}
 	}

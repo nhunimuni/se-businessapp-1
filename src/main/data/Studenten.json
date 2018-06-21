@@ -1,0 +1,26 @@
+{
+  "id" : "Studenten",
+  "genericType" : "com.businessapp.pojos.Customer",
+  "entities" : [ {
+    "id" : "C.Q9EL7E",
+    "lastName" : "Lam",
+    "firstName" : "Ka Yan",
+    "contacts" : [ "Jklöä 11, 10678 Berlin" ],
+    "notes" : [ "2018-06-05 15:19:16.259, Customer record created." ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.14F6RT",
+    "lastName" : "Tran",
+    "firstName" : "Nhu M.",
+    "contacts" : [ "Asdfgh 32, 12345 Berlin" ],
+    "notes" : [ "2018-06-05 15:19:16.258, Customer record created." ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.LBMQ4L",
+    "lastName" : "Ngyuen",
+    "firstName" : "Thao",
+    "contacts" : [ "Yxcvb 8, 13789 Berlin" ],
+    "notes" : [ "2018-06-05 15:19:16.260, Customer record created." ],
+    "status" : "ACTIVE"
+  } ]
+}

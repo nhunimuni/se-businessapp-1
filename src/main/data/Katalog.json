@@ -1,0 +1,65 @@
+{
+  "id" : "Katalog",
+  "genericType" : "com.businessapp.pojos.Article",
+  "entities" : [ {
+    "articleName" : "Suppenschöpfer, Serie ERGONOM",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.820, Article record created.", "2018-06-19 17:49:42.821, aus Edelstahl 18/0, hochglänzend, ergonomisch profilierter Griff aus Edelstahl 18/10, fugenlos" ],
+    "status" : "AVAILABLE",
+    "id" : "A.B5LY0K"
+  }, {
+    "articleName" : "Tablett \"PURE\"",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.826, Article record created.", "2018-06-19 17:49:42.827, Tablett \"PURE\", GN 2/4, Höhe 3 cm, Melamin, schwarz, extrem bruchsicher, glänzende und harte Oberfläche, spülmaschinenfest, spülmaschinenfest, lebensmittelecht, temperaturbeständig -30°c bis +70 °C" ],
+    "status" : "AVAILABLE",
+    "id" : "A.3EEUHF"
+  }, {
+    "articleName" : "Doppel-Thermobehälter",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.830, Article record created.", "2018-06-19 17:49:42.831, 2 Fronttüren, 20 Einschübe für GN 1/1, rollbar, 2 Räder mit Bremse, dunkelgrau, Innenhöhe 2 x 50 cm, Länge 68 x Breite 48 x Höhe 120 cm" ],
+    "status" : "AVAILABLE",
+    "id" : "A.QLB3XQ"
+  }, {
+    "articleName" : "Tisch Set \"VARIO II\"",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.834, Article record created.", "2018-06-19 17:49:42.835, 22 x 22 x H 26 cm, 4-teilig: 1 Ständer + 3 Behälter (innen (Ø 9 cm) für Besteck, Servietten etc., vielseitig einsetzbar, Melamin/verchromt, spülmaschinenfest" ],
+    "status" : "AVAILABLE",
+    "id" : "A.90W4XV"
+  }, {
+    "articleName" : "Chafing Dish TRIO",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.818, Article record created.", "2018-06-19 17:49:42.819, max GN-Behältertiefe 65 mm" ],
+    "status" : "AVAILABLE",
+    "id" : "A.YJ02EL"
+  }, {
+    "articleName" : "Suppenkelle Oval, Serie Le Buffet",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.822, Article record created.", "2018-06-19 17:49:42.823, mit schwarzem ABS Griff, Kelle aus Edelstahl 18/10, schwere Qualität" ],
+    "status" : "AVAILABLE",
+    "id" : "A.2MFNT3"
+  }, {
+    "articleName" : "Chafing Dish 1/2 GN",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.816, Article record created.", "2018-06-19 17:49:42.817, 65 mm tief, CNS, stapelbar, 375 x 290 x H 390 mm, 2,7 kg, 1 Brennpastenbehälter" ],
+    "status" : "AVAILABLE",
+    "id" : "A.MXK9DL"
+  }, {
+    "articleName" : "GN-Tablett",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.824, Article record created.", "2018-06-19 17:49:42.825, Melamin, GN 1/1, Tiefe: 20 mm" ],
+    "status" : "AVAILABLE",
+    "id" : "A.6505BK"
+  }, {
+    "articleName" : "Kunststoff Thermobehälter",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.828, Article record created.", "2018-06-19 17:49:42.829, stapelbar, mit Fronttür, 11 Einschübe GN 1/1, hellgrau, 65 x 45 x H 61 cm, H innen 50 cm, ohne Tronsport-Trolly" ],
+    "status" : "AVAILABLE",
+    "id" : "A.DJDP0N"
+  }, {
+    "articleName" : "Besteckbehälter",
+    "quantity" : "10",
+    "notes" : [ "2018-06-19 17:49:42.832, Article record created.", "2018-06-19 17:49:42.833, Edelstahl, ca. 26 x 30 x 20 cm, für 4 Besteckköcher Ø 100 mm x H 130 mm" ],
+    "status" : "AVAILABLE",
+    "id" : "A.A9JW1P"
+  } ]
+}

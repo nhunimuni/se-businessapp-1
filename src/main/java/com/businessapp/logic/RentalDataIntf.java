@@ -1,10 +1,9 @@
 package com.businessapp.logic;
 
 import com.businessapp.ControllerIntf;
-import com.businessapp.pojos.Article;
-import com.businessapp.pojos.Customer;
 import com.businessapp.pojos.Rental;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 // Das Akronym CRUD umfasst die grundlegenden Datenbankoperationen Create, Read oder Retrieve, Update und Delete oder Destroy.
@@ -32,7 +31,7 @@ public interface RentalDataIntf extends ControllerIntf {
     public Collection<Rental> findAllRentals();
 
     //CREATE
-    public Rental newRental(String firstName, String lastName, String articleId , String quantity);
+    public Rental newRental(String firstName, String lastName, String articleId , String quantity, LocalDate from, LocalDate to);
 
     //UPDATE
     public void updateRental( Rental c );

@@ -6,6 +6,7 @@ import com.businessapp.pojos.Article;
 import com.businessapp.pojos.Customer;
 import com.businessapp.pojos.Rental;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.HashMap;
 
@@ -46,13 +47,13 @@ public class RentalDataMockImpl implements RentalDataIntf{
     public void start() {
 
         Customer c1 = new Customer(null, "Minto", "Tran");
-        Rental rent1 = DS.newRental("Minto", "Tran", "A123456", "10");
+        Rental rent1 = DS.newRental("Minto", "Tran", "A123456", "10", LocalDate.of(2018, 4, 11), LocalDate.of(2018, 5, 12));
 
         Customer c2 = new Customer(null, "Minto", "Tran");
-        Rental rent2 = DS.newRental("Minto", "Tran", "A123456", "5");
+        Rental rent2 = DS.newRental("Minto", "Tran", "A123456", "5", LocalDate.of(2018, 5, 12), LocalDate.of(2019, 4, 30));
 
         Customer c3 = new Customer(null, "Minto", "Tran");
-        Rental rent3 = DS.newRental("Minto", "Tran", "A123456", "1");
+        Rental rent3 = DS.newRental("Minto", "Tran", "A123456", "1", LocalDate.of(2018, 6, 13), LocalDate.of(2018, 7, 10));
 
     }
 
@@ -71,8 +72,8 @@ public class RentalDataMockImpl implements RentalDataIntf{
     }
 
     @Override
-    public Rental newRental(String firstName, String lastName, String articleId, String quantity) {
-        Rental r = new Rental(null, firstName, lastName, articleId, quantity);
+    public Rental newRental(String firstName, String lastName, String articleId, String quantity, LocalDate from, LocalDate to) {
+        Rental r = new Rental(null, firstName, lastName, articleId, quantity, to, from);
         _data.put(r.getId(), r);
         return r;
     }

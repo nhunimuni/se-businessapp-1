@@ -9,6 +9,7 @@ import com.businessapp.pojos.Customer;
 import com.businessapp.pojos.Rental;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Collection;
 
 /**
@@ -88,8 +89,8 @@ public class RentalDataSource implements RentalDataIntf {
     }
 
     @Override
-    public Rental newRental(String firstName, String lastName, String articleId, String quantity) {
-        Rental r = new Rental( null, firstName, lastName, articleId, quantity );
+    public Rental newRental(String firstName, String lastName, String articleId, String quantity, LocalDate from, LocalDate to) {
+        Rental r = new Rental( null, firstName, lastName, articleId, quantity, from, to );
         rentals.update( r );
         if( persistenceProvider != null ) {
             persistenceProvider.save( rentals, rentals.getId() );

@@ -22,6 +22,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -68,13 +69,14 @@ public class RentalFXMLController implements FXMLControllerIntf {
      */
     private final ObservableList<Rental> cellDataObservable = FXCollections.observableArrayList();
 
-    private final String LABEL_ID		= "Rental.-Nr.";
-    private final String LABEL_DATE		= "Date";
-    private final String LABEL_CUSTOMER_FIRST = "Cust. Firstname";
-    private final String LABEL_CUSTOMER_LAST = "Cust. Lastname";
-    private final String LABEL_ARTICLE	= "Article";
-    private final String LABEL_QUANTITY	= "Qty.";
-    private final String LABEL_NOTES	= "Anmerk.";
+    private final String LABEL_ID		        = "Rental.-Nr.";
+    private final String LABEL_DATE_FROM		= "From";
+    private final String LABEL_DATE_TO	        = "To";
+    private final String LABEL_CUSTOMER_ID      = "Customer-ID";
+    private final String LABEL_STATUS           = "Status";
+    private final String LABEL_ARTICLE	        = "Article";
+    private final String LABEL_QUANTITY        	= "Qty.";
+    private final String LABEL_NOTES	        = "Anmerk.";
 
 
     @Override
@@ -147,30 +149,30 @@ public class RentalFXMLController implements FXMLControllerIntf {
         fxRental_TableCol_ID.setText( LABEL_ID );
         fxRental_TableCol_ID.setCellValueFactory( new PropertyValueFactory<>( "id" ) );
 
-        TableColumn<Rental,String> tableCol_DATE = new TableColumn<>( LABEL_DATE );
-        tableCol_DATE.getStyleClass().add( "tableview-customer-column-name" );
-        tableCol_DATE.setCellValueFactory( cellData -> {
+        TableColumn<Rental,String> tableCol_DATE_FROM = new TableColumn<>( LABEL_DATE_FROM );
+        tableCol_DATE_FROM.getStyleClass().add( "tableview-customer-column-name" );
+        tableCol_DATE_FROM.setCellValueFactory( cellData -> {
             StringProperty observable = new SimpleStringProperty();
             Rental c = cellData.getValue();
-            observable.set( c.getRentalDate());
+            observable.set( String.valueOf(c.getRentalStart()));
             return observable;
         });
 
-        TableColumn<Rental,String> tableCol_CUSTOMER_FIRST = new TableColumn<>( LABEL_CUSTOMER_FIRST );
-        tableCol_CUSTOMER_FIRST.getStyleClass().add( "tableview-customer-column-name" );
-        tableCol_CUSTOMER_FIRST.setCellValueFactory( cellData -> {
+        TableColumn<Rental,String> tableCol_DATE_TO = new TableColumn<>( LABEL_DATE_TO );
+        tableCol_DATE_TO.getStyleClass().add( "tableview-customer-column-name" );
+        tableCol_DATE_TO.setCellValueFactory( cellData -> {
             StringProperty observable = new SimpleStringProperty();
             Rental c = cellData.getValue();
-            observable.set( c.getCustomerOfRental().getFirstName());
+            observable.set( String.valueOf(c.getRentalDateEnd()));
             return observable;
         });
 
-        TableColumn<Rental,String> tableCol_CUSTOMER_LAST = new TableColumn<>( LABEL_CUSTOMER_LAST );
-        tableCol_CUSTOMER_LAST.getStyleClass().add( "tableview-customer-column-name" );
-        tableCol_CUSTOMER_LAST.setCellValueFactory( cellData -> {
+        TableColumn<Rental,String> tableCol_CUSTOMER_ID = new TableColumn<>( LABEL_CUSTOMER_ID );
+        tableCol_CUSTOMER_ID.getStyleClass().add( "tableview-customer-column-name" );
+        tableCol_CUSTOMER_ID.setCellValueFactory( cellData -> {
             StringProperty observable = new SimpleStringProperty();
             Rental c = cellData.getValue();
-            observable.set( c.getCustomerOfRental().getLastName());
+            observable.set( c.getCustomerOfRental().getId());
             return observable;
         });
 
@@ -190,6 +192,16 @@ public class RentalFXMLController implements FXMLControllerIntf {
             // Render status as 3-letter shortcut of Customer state enum.
             Rental c = cellData.getValue();
             observable.set(c.getQuantity());
+            return observable;
+        });
+
+        TableColumn<Article,String> tableCol_STATUS = new TableColumn<>( LABEL_STATUS );
+        tableCol_STATUS.getStyleClass().add( "tableview-customer-column-status" );
+        tableCol_STATUS.setCellValueFactory( cellData -> {
+            StringProperty observable = new SimpleStringProperty();
+            // Render status as 3-letter shortcut of Customer state enum.
+            Article c = cellData.getValue();
+            observable.set( c.getStatus().name().substring( 0, 3 ) );
             return observable;
         });
 
@@ -261,13 +273,12 @@ public class RentalFXMLController implements FXMLControllerIntf {
         fxRental_TableView.getColumns().clear();
         fxRental_TableView.getColumns().addAll( Arrays.asList(
                 fxRental_TableCol_ID,
-                tableCol_DATE,
+                tableCol_DATE_FROM,
+                tableCol_DATE_TO,
                 tableCol_NOTES,
-                tableCol_CUSTOMER_FIRST,
-                tableCol_CUSTOMER_LAST,
+                tableCol_CUSTOMER_ID,
                 tableCol_ARTICLE,
                 tableCol_QUANTITY
-
         ));
 
 		/*
@@ -333,7 +344,7 @@ public class RentalFXMLController implements FXMLControllerIntf {
 
     @FXML
     void fxRental_New() {
-        Rental art = DS.newRental( null, null, null , null);
+        Rental art = DS.newRental( null, null, null , null, LocalDate.now(), LocalDate.now());
         openUpdateDialog( art, true );
     }
 
@@ -357,14 +368,14 @@ public class RentalFXMLController implements FXMLControllerIntf {
      */
     private void openUpdateDialog( Rental c, boolean newItem ) {
         List<StringTestUpdateProperty> altered = new ArrayList<StringTestUpdateProperty>();
-        String fn = c.getCustomerOfRental().getFirstName();
+        String fn = c.getCustomerOfRental().getId();
         String label = ( fn==null || fn.length()==0 )? c.getId() : fn;
 
         PopupUpdateProperties dialog = new PopupUpdateProperties( label, altered, Arrays.asList(
                 new StringTestUpdateProperty( LABEL_ID, c.getId(), false ),
-                new StringTestUpdateProperty( LABEL_DATE, c.getRentalDate(), false ),
-                new StringTestUpdateProperty( LABEL_CUSTOMER_FIRST, c.getCustomerOfRental().getFirstName(), true ),
-                new StringTestUpdateProperty( LABEL_CUSTOMER_LAST, c.getCustomerOfRental().getLastName(), true ),
+                new StringTestUpdateProperty( LABEL_DATE_FROM, c.getRentalStart().toString(), true ),
+                new StringTestUpdateProperty( LABEL_DATE_TO, c.getRentalDateEnd().toString(), true ),
+                new StringTestUpdateProperty( LABEL_CUSTOMER_ID, c.getId(), false),
                 new StringTestUpdateProperty( LABEL_ARTICLE, c.getLentArticle(), true ),
                 new StringTestUpdateProperty( LABEL_QUANTITY, c.getQuantity(), true )
         ));
@@ -384,18 +395,6 @@ public class RentalFXMLController implements FXMLControllerIntf {
             String alteredValue = dp.getValue();
             //System.err.println( "altered: " + pName + " from [" + dp.prevValue() + "] to [" + alteredValue + "]" );
 
-            Customer newCust = new Customer(null, null, null);
-
-            if( pName.equals( LABEL_CUSTOMER_FIRST ) ) {
-                newCust.setFirstName(alteredValue);
-            } else {
-                newCust.setFirstName(rental.getCustomerOfRental().getFirstName());
-            }
-            if( pName.equals( LABEL_CUSTOMER_LAST ) ) {
-                newCust.setLastName(alteredValue);
-            } else {
-                newCust.setLastName(rental.getCustomerOfRental().getLastName());
-            }
             if( pName.equals( LABEL_QUANTITY ) ) {
                 rental.setQuantity(alteredValue);
             } else {
@@ -406,7 +405,20 @@ public class RentalFXMLController implements FXMLControllerIntf {
             } else {
                 rental.setLentArticle(rental.getLentArticle());
             }
-            rental.setCustomerOfRental(newCust);
+            if (pName.equals(LABEL_DATE_TO)) {
+                String[] stringSplit = alteredValue.split("[-./]");
+                rental.setRentalEnd(LocalDate.of(
+                        Integer.parseInt(stringSplit[0]),
+                        Integer.parseInt(stringSplit[1]),
+                        Integer.parseInt(stringSplit[2])));
+            }
+            if (pName.equals(LABEL_DATE_FROM)) {
+                String[] stringSplit = alteredValue.split("[-./]");
+                rental.setRentalEnd(LocalDate.of(
+                        Integer.parseInt(stringSplit[0]),
+                        Integer.parseInt(stringSplit[1]),
+                        Integer.parseInt(stringSplit[2])));
+            }
         }
         if( altered.size() > 0 ) {
             DS.updateRental( rental );	// update object in persistent store

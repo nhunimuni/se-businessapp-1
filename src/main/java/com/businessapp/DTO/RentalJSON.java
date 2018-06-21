@@ -1,5 +1,6 @@
 package com.businessapp.DTO;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class RentalJSON extends Rental implements JSONIntf{
      * Required by JSON de-serialization.
      */
     private RentalJSON() {
-        super( null, null , null, null, null);
+        super( null, null , null, null, null, null, null);
         this.getNotes().clear();
     }
 
@@ -30,12 +31,43 @@ public class RentalJSON extends Rental implements JSONIntf{
      * @param c copied Customer object.
      */
     public RentalJSON( Rental c ) {
-        super( c.getId(), c.getCustomerOfRental().getFirstName(), c.getCustomerOfRental().getLastName(), c.getLentArticle(), c.getQuantity() );
+        super( c.getId(), c.getCustomerOfRental().getFirstName(), c.getCustomerOfRental().getLastName(), c.getLentArticle(), c.getQuantity(), c.getRentalStart(), c.getRentalDateEnd() );
         this.getNotes().clear();
         for( LogEntry le : c.getNotes() ) {
             this.getNotes().add( le );
         }
+        this.setStatus( c.getStatus() );
     }
+
+    /*@JsonGetter("rentalDateStart")
+    public String getRentalStartAsString() {
+        return getRentalDateEnd().toString();
+    }
+
+    @JsonGetter("rentalDateEnd")
+    public String getRentalEndAsString() {
+        return getRentalStart().toString();
+    }
+
+    @JsonSetter("rentalDateEnd")
+    public Rental setRentalEndAsString(String publishedAsString) {
+        String[] stringSplit = publishedAsString.split("[-./]");
+        setRentalEnd(LocalDate.of(
+                Integer.parseInt(stringSplit[0]),
+                Integer.parseInt(stringSplit[1]),
+                Integer.parseInt(stringSplit[2])));
+        return this;
+    }
+
+    @JsonSetter("rentalDateStart")
+    public Rental setRentalDateStartAsString(String publishedAsString) {
+        String[] stringSplit = publishedAsString.split("[-./]");
+        setRentalDateStart(LocalDate.of(
+                Integer.parseInt(stringSplit[0]),
+                Integer.parseInt(stringSplit[1]),
+                Integer.parseInt(stringSplit[2])));
+        return this;
+    }*/
 
     /**
      * Public method to create original POJO from JSON DTO.
@@ -43,11 +75,12 @@ public class RentalJSON extends Rental implements JSONIntf{
      */
     @JsonIgnore
     public Rental getRentals() {
-        Rental c = new Rental( this.getId(), this.getCustomerOfRental().getFirstName(), this.getCustomerOfRental().getLastName(), this.getLentArticle(), this.getQuantity() );
+        Rental c = new Rental( this.getId(), this.getCustomerOfRental().getFirstName(), this.getCustomerOfRental().getLastName(), this.getLentArticle(), this.getQuantity(), this.getRentalStart(), this.getRentalDateEnd() );
         c.getNotes().clear();
         for( LogEntry le : this.getNotes() ) {
             c.getNotes().add( le );
         }
+        //c.setStatus( this.getStatus() );
         return c;
     }
 
@@ -79,5 +112,4 @@ public class RentalJSON extends Rental implements JSONIntf{
         }
         return this;
     }
-
 }

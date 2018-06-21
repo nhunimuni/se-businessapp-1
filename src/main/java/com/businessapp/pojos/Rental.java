@@ -1,9 +1,12 @@
 package com.businessapp.pojos;
 
 import com.businessapp.logic.IDGen;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -16,15 +19,22 @@ public class Rental implements EntityIntf{
     private static final long serialVersionUID = 1L;
     private static IDGen IDG = new IDGen( "R.", IDGen.IDTYPE.AIRLINE, 6 );
 
+    public enum RentalStatus {
+        ACTIVE, EXCEEDED
+    }
     /*
      * Properties.
      */
     private String rentalId = null;
-    private Date rentalDate;
+    //private Date rentalDateStart;
+    //private String rentalDateEnd;
+    private LocalDate rentalDateStart;
+    private LocalDate rentalDateEnd;
     private Customer lentBy = null;
     private String lentArticle  = null;
     private String quantity  = null;
     private List<LogEntry> notes = new ArrayList<LogEntry>();
+    private RentalStatus status = RentalStatus.ACTIVE;
 
     /**
      * Private default constructor (required by JSON deserialization).
@@ -39,9 +49,10 @@ public class Rental implements EntityIntf{
      * @param lastName
      * @param articleID
      */
-    public Rental( String id, String firstName, String lastName, String articleID, String quantity) {
+    public Rental( String id, String firstName, String lastName, String articleID, String quantity, LocalDate from, LocalDate to) {
         rentalId = id==null? IDG.nextId() : id;
-        rentalDate = new Date();
+        rentalDateStart = from;
+        rentalDateEnd = to;
         lentBy = new Customer(null, firstName, lastName);
         lentArticle = articleID;
         this.quantity = quantity;
@@ -59,18 +70,35 @@ public class Rental implements EntityIntf{
 
     public String getLentArticle() {return lentArticle; }
 
-    public String getRentalDate() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String date = sdf.format(rentalDate);
-        return date;
+    @JsonGetter("rentalDateStart")
+    public String getRentalStartAsString() {
+        return rentalDateStart.toString();
+    }
+
+    public LocalDate getRentalStart() {
+        return rentalDateStart;
+    }
+
+    @JsonGetter("rentalDateEnd")
+    public String getRentalEndAsString() {
+        return rentalDateEnd.toString();
+    }
+
+    public LocalDate getRentalDateEnd() {
+        return rentalDateEnd;
+    }
+
+    public RentalStatus getStatus() {
+        return status;
     }
 
     public String getQuantity() {return quantity;}
 
+    @JsonGetter("notes")
     public List<String> getNotesAsStringList() {
-        List<String>res = new ArrayList<String>();
-        for( LogEntry n : notes ) {
-            res.add( n.toString() );
+        List<String> res = new ArrayList<>();
+        for (LogEntry n : notes) {
+            res.add(n.toString());
         }
         return res;
     }
@@ -79,20 +107,44 @@ public class Rental implements EntityIntf{
         return notes;
     }
 
+
     public Customer setCustomerOfRental(Customer cust) {
         lentBy = cust;
         return lentBy;
     }
+
 
     public String setLentArticle(String art) {
         lentArticle = art;
         return lentArticle;
     }
 
-    public Date setRentalDate(String dateInString) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = sdf.parse(dateInString);
-        return date;
+   @JsonSetter("rentalDateStart")
+    public Rental setRentalDateStartAsString(String publishedAsString) {
+        String[] stringSplit = publishedAsString.split("[-./]");
+        setRentalDateStart(LocalDate.of(
+                Integer.parseInt(stringSplit[0]),
+                Integer.parseInt(stringSplit[1]),
+                Integer.parseInt(stringSplit[2])));
+        return this;
+    }
+
+    public void setRentalDateStart(LocalDate from) {
+        rentalDateStart = from;
+    }
+
+    @JsonSetter("rentalDateEnd")
+    public Rental setRentalEndAsString(String publishedAsString) {
+        String[] stringSplit = publishedAsString.split("[-./]");
+        setRentalEnd(LocalDate.of(
+                Integer.parseInt(stringSplit[0]),
+                Integer.parseInt(stringSplit[1]),
+                Integer.parseInt(stringSplit[2])));
+        return this;
+    }
+
+    public void setRentalEnd(LocalDate to) {
+        rentalDateEnd = to;
     }
 
     public String setQuantity(String qty){
@@ -100,7 +152,27 @@ public class Rental implements EntityIntf{
         return  quantity;
     }
 
+    public void setStatus(RentalStatus status) {
+        this.status = status;
+    }
+
     public void addNote(String note) {
         notes.add( new LogEntry(note));
+    }
+
+    /**
+     * Custom Json‐de‐Serializer for 'notes' property.
+     * Maps notes from String list to LogEntry array.
+     *
+     * @param notesAsStr notes as String list.
+     * @return self reference.
+     */
+    @JsonSetter("notes")
+    public Rental setNotesAsStringList(String[] notesAsStr) {
+        for (String noteAsStr : notesAsStr) {
+            LogEntry note = new LogEntry(noteAsStr);
+            getNotes().add(note);
+        }
+        return this;
     }
 }

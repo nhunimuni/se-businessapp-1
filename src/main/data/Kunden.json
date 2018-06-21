@@ -1,0 +1,26 @@
+{
+  "id" : "Kunden",
+  "genericType" : "com.businessapp.pojos.Customer",
+  "entities" : [ {
+    "id" : "C.50M1HE",
+    "lastName" : "I.",
+    "firstName" : "Isaac",
+    "contacts" : [ "i@asdfghj.com" ],
+    "notes" : [ "2018-06-05 14:23:16.865, Customer record created." ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.CSSADC",
+    "lastName" : "L.",
+    "firstName" : "Kenneth",
+    "contacts" : [ "kenken@asdfghj.de" ],
+    "notes" : [ "2018-06-05 14:23:32.077, Customer record created." ],
+    "status" : "ACTIVE"
+  }, {
+    "id" : "C.ES4IMX",
+    "lastName" : "Mint",
+    "firstName" : "Minto",
+    "contacts" : [ "mm@asdfghj.de" ],
+    "notes" : [ "2018-06-05 14:23:03.883, Customer record created." ],
+    "status" : "ACTIVE"
+  } ]
+}
