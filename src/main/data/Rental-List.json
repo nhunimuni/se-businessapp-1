@@ -1,0 +1,175 @@
+{
+  "id" : "Rental-List",
+  "genericType" : "com.businessapp.pojos.Rental",
+  "entities" : [ {
+    "rentalDateStart" : "2019-04-30",
+    "rentalDateEnd" : "2018-05-12",
+    "lentArticle" : "A123456",
+    "quantity" : "5",
+    "notes" : [ "2018-06-21 23:34:15.721, Rental record created." ],
+    "status" : "ACTIVE",
+    "id" : "R.CP2AN7",
+    "customerOfRental" : {
+      "id" : "C.RCAXF3",
+      "lastName" : "Tran",
+      "firstName" : "Minto",
+      "contacts" : [ ],
+      "notes" : [ {
+        "log" : "Customer record created.",
+        "simpleTimestamp" : "21. Jun 2018, 23:43"
+      } ],
+      "status" : "ACTIVE",
+      "notesAsStringList" : [ "2018-06-21 23:43:08.282, Customer record created." ]
+    },
+    "rentalStart" : {
+      "year" : 2019,
+      "month" : "APRIL",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "era" : "CE",
+      "dayOfYear" : 120,
+      "dayOfWeek" : "TUESDAY",
+      "leapYear" : false,
+      "dayOfMonth" : 30,
+      "monthValue" : 4
+    }
+  }, {
+    "rentalDateStart" : "2018-05-12",
+    "rentalDateEnd" : "2018-04-11",
+    "lentArticle" : "A123456",
+    "quantity" : "10",
+    "notes" : [ "2018-06-21 23:34:15.718, Rental record created." ],
+    "status" : "ACTIVE",
+    "id" : "R.WP86G5",
+    "customerOfRental" : {
+      "id" : "C.XUOLEU",
+      "lastName" : "Tran",
+      "firstName" : "Minto",
+      "contacts" : [ ],
+      "notes" : [ {
+        "log" : "Customer record created.",
+        "simpleTimestamp" : "21. Jun 2018, 23:43"
+      } ],
+      "status" : "ACTIVE",
+      "notesAsStringList" : [ "2018-06-21 23:43:08.284, Customer record created." ]
+    },
+    "rentalStart" : {
+      "year" : 2018,
+      "month" : "MAY",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "era" : "CE",
+      "dayOfYear" : 132,
+      "dayOfWeek" : "SATURDAY",
+      "leapYear" : false,
+      "dayOfMonth" : 12,
+      "monthValue" : 5
+    }
+  }, {
+    "rentalDateStart" : "2018-06-22",
+    "rentalDateEnd" : "2018-06-22",
+    "lentArticle" : "213123",
+    "quantity" : "10",
+    "notes" : [ "2018-06-21 23:36:22.142, Rental record created." ],
+    "status" : "ACTIVE",
+    "id" : "R.BG7EK9",
+    "customerOfRental" : {
+      "id" : "C.6JUX4E",
+      "lastName" : null,
+      "firstName" : null,
+      "contacts" : [ ],
+      "notes" : [ {
+        "log" : "Customer record created.",
+        "simpleTimestamp" : "21. Jun 2018, 23:43"
+      } ],
+      "status" : "ACTIVE",
+      "notesAsStringList" : [ "2018-06-21 23:43:08.286, Customer record created." ]
+    },
+    "rentalStart" : {
+      "year" : 2018,
+      "month" : "JUNE",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "era" : "CE",
+      "dayOfYear" : 173,
+      "dayOfWeek" : "FRIDAY",
+      "leapYear" : false,
+      "dayOfMonth" : 22,
+      "monthValue" : 6
+    }
+  }, {
+    "rentalDateStart" : "2018-06-22",
+    "rentalDateEnd" : "2018-06-22",
+    "lentArticle" : "ss",
+    "quantity" : "11",
+    "notes" : [ "2018-06-21 23:43:05.206, Rental record created." ],
+    "status" : "ACTIVE",
+    "id" : "R.1E4C5C",
+    "customerOfRental" : {
+      "id" : "C.UJKOUV",
+      "lastName" : null,
+      "firstName" : null,
+      "contacts" : [ ],
+      "notes" : [ {
+        "log" : "Customer record created.",
+        "simpleTimestamp" : "21. Jun 2018, 23:43"
+      } ],
+      "status" : "ACTIVE",
+      "notesAsStringList" : [ "2018-06-21 23:43:08.288, Customer record created." ]
+    },
+    "rentalStart" : {
+      "year" : 2018,
+      "month" : "JUNE",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "era" : "CE",
+      "dayOfYear" : 173,
+      "dayOfWeek" : "FRIDAY",
+      "leapYear" : false,
+      "dayOfMonth" : 22,
+      "monthValue" : 6
+    }
+  }, {
+    "rentalDateStart" : "2018-06-22",
+    "rentalDateEnd" : "2018-06-22",
+    "lentArticle" : "asdas",
+    "quantity" : "10",
+    "notes" : [ "2018-06-21 23:42:59.161, Rental record created." ],
+    "status" : "ACTIVE",
+    "id" : "R.P9IJNO",
+    "customerOfRental" : {
+      "id" : "C.TEBSR0",
+      "lastName" : null,
+      "firstName" : null,
+      "contacts" : [ ],
+      "notes" : [ {
+        "log" : "Customer record created.",
+        "simpleTimestamp" : "21. Jun 2018, 23:43"
+      } ],
+      "status" : "ACTIVE",
+      "notesAsStringList" : [ "2018-06-21 23:43:08.290, Customer record created." ]
+    },
+    "rentalStart" : {
+      "year" : 2018,
+      "month" : "JUNE",
+      "chronology" : {
+        "id" : "ISO",
+        "calendarType" : "iso8601"
+      },
+      "era" : "CE",
+      "dayOfYear" : 173,
+      "dayOfWeek" : "FRIDAY",
+      "leapYear" : false,
+      "dayOfMonth" : 22,
+      "monthValue" : 6
+    }
+  } ]
+}
